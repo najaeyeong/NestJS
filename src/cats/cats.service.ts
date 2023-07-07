@@ -6,10 +6,12 @@ import { Cat } from './cats.schema';
 import * as bcrypt from 'bcrypt';
 import { CatsRepository } from './cats.repository';
 
+//api url에 접속하면 실행되게될 로직들
 @Injectable() //공급자
 export class CatsService {
   //constructor(@InjectModel(Cat.name) private catModel: Model<Cat>) {} // db 모델 직접 연결해서 사용
   constructor(private readonly catsRepository: CatsRepository) {}
+
   async signUp(body: CatRequestDto) {
     const { email, name, password } = body;
     const id = await this.catsRepository.existsByEmail(email);
@@ -30,5 +32,22 @@ export class CatsService {
     });
     //반환
     return cat.readOnlyData;
+  }
+
+  async uploadImg(cat: Cat, files: Express.Multer.File) {
+    const fileName = `cats/${files[0].filename}`;
+    const newCat = await this.catsRepository.findByIdAndUpdateImg(
+      cat.id,
+      fileName,
+    );
+    return newCat;
+  }
+
+  async getAllCats() {
+    const allCat = await this.catsRepository.findAll();
+    return allCat;
+    // const cats = await this.catsRepository.findAll();
+    // const ReadOnlyCats = cats.map((cat) => cat.readOnlyData);
+    // return ReadOnlyCats;
   }
 }

@@ -5,15 +5,23 @@ import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
+import { CommentsController } from './comments/controllers/comments.controller';
+import { CommentsService } from './comments/services/comments.service';
+import { CommentsModule } from './comments/comments.module';
 import mongoose from 'mongoose';
+import { AwsService } from './aws.service';
+//controllers에 providers와 imports를 연결,공급
 @Module({
   imports: [
     CatsModule,
     ConfigModule.forRoot(), //환경변수사용 .env
     MongooseModule.forRoot(process.env.MONGODB_URI), //mongoDB 연결
+    AuthModule,
+    CommentsModule,
   ], //모든 모듈이 app.module로 모이게 된다.
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AwsService],
 })
 export class AppModule implements NestModule {
   private readonly isDev: boolean = process.env.MODE === 'dev' ? true : false; //개발모드 true false
