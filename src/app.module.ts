@@ -9,19 +9,26 @@ import { AuthModule } from './auth/auth.module';
 import { CommentsController } from './comments/controllers/comments.controller';
 import { CommentsService } from './comments/services/comments.service';
 import { CommentsModule } from './comments/comments.module';
+import { AWSModule } from './aws/aws.module';
+
 import mongoose from 'mongoose';
-import { AwsService } from './aws.service';
+
 //controllers에 providers와 imports를 연결,공급
 @Module({
   imports: [
-    CatsModule,
+    // config 전역 사용
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     ConfigModule.forRoot(), //환경변수사용 .env
     MongooseModule.forRoot(process.env.MONGODB_URI), //mongoDB 연결
+    CatsModule,
     AuthModule,
     CommentsModule,
+    AWSModule,
   ], //모든 모듈이 app.module로 모이게 된다.
   controllers: [AppController],
-  providers: [AppService, AwsService],
+  providers: [AppService],
 })
 export class AppModule implements NestModule {
   private readonly isDev: boolean = process.env.MODE === 'dev' ? true : false; //개발모드 true false

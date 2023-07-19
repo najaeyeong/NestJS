@@ -43,9 +43,15 @@ export class CatsRepository {
     return await this.catModel.create(cat);
   }
 
-  async findByIdAndUpdateImg(id: string | Types.ObjectId, fileName: string) {
+  async findByIdAndUpdateImg(
+    id: string | Types.ObjectId,
+    imgUrl: string,
+    key: string,
+  ) {
     const cat = await this.catModel.findById(id);
-    cat.imgUrl = `${process.env.URL}/media/${fileName}`;
+    cat.imgUrl = imgUrl;
+    cat.key = key;
+    // cat.imgUrl = `${process.env.URL}/media/${fileName}`;
     const newCat = await cat.save();
 
     return newCat.readOnlyData;

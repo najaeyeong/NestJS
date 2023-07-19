@@ -7,6 +7,7 @@ import {
   Param,
   Redirect,
   Req,
+  Res,
   UseFilters,
   UseInterceptors,
 } from '@nestjs/common';
@@ -32,6 +33,15 @@ export class AppController {
     @Param() param: { id: string; name: string },
   ): string {
     throw new HttpException('error message', 404); //http 관련 에러 관리
+    return this.appService.getHello();
+  }
+
+  @Get('/')
+  // @HttpCode(200)
+  // @Headers()
+  // @Redirect('')
+  @UseFilters(HttpExceptionFilter) //예외처리 필터 적용
+  getIndex(@Req() req: Request, @Res() res: Response): string {
     return this.appService.getHello();
   }
 }

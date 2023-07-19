@@ -62,12 +62,22 @@ export class Cat extends Document {
   @IsString()
   imgUrl: string;
 
+  @Prop({})
+  @ApiProperty({
+    example: 'key',
+    description: 'key',
+    required: false,
+  })
+  @IsString()
+  key: string;
+
   readonly readOnlyData: {
     id: string;
     email: string;
     name: string;
     imgUrl: string;
     comments: Comments[];
+    key: string;
   };
 
   readonly comments: Comments[];
@@ -82,6 +92,7 @@ _CatSchema.virtual('readOnlyData').get(function (this: Cat) {
     name: this.name,
     imgUrl: this.imgUrl,
     comments: this.comments,
+    key: this.key,
   };
 });
 // 연결후 담을곳 이름 작명가능

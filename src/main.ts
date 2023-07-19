@@ -24,6 +24,13 @@ async function bootstrap() {
   // app.setBaseViewsDir(path.join(__dirname, '..', 'src', 'views')); //src/views의 ejs파일을 view로 사용함
   // app.setViewEngine("ejs");
 
+  // app.useStaticAssets(path.join(__dirname, '..', './build'));
+
+  // //   app.use(express.static(path.join(__dirname + "/public"))); // 정적 파일 위치 설정 //같이 명시해주면 public 폴더안에 있는 폴더를 url로 보낼 수가 있다.
+  // // app.use(express.static(path.join(__dirname, "./build"))); //폴더안의 것들을 꺼내어 써도 좋다 라는 것
+  // app.get('/', (req, res) => {
+  //   res.sendFile(path.join(__dirname, './build/index.html')); // __dirname = root    , / 로 접속하면 build의 index를 출력해주어라
+  // });
   // api 보안 관련설정
   app.use(
     ['/api', '/api-json'],

@@ -7,6 +7,8 @@ import { CatsController } from 'src/cats/cats.controller';
 import { CatsRepository } from 'src/cats/cats.repository';
 import { CatsModule } from 'src/cats/cats.module';
 import { ConfigModule } from '@nestjs/config';
+import { AWSModule } from 'src/aws/aws.module';
+import { CommentsModule } from 'src/comments/comments.module';
 
 @Module({
   imports: [
@@ -20,8 +22,10 @@ import { ConfigModule } from '@nestjs/config';
     }),
     //CatModule이 export 하는 것들을 갖어온다.
     forwardRef(() => CatsModule),
+    forwardRef(() => AWSModule),
+    forwardRef(() => CommentsModule),
   ],
-  controllers: [CatsController],
+  controllers: [],
   providers: [AuthService, JwtStrategy],
   exports: [AuthService],
 })
