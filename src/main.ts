@@ -54,7 +54,12 @@ async function bootstrap() {
 
   //Cors 설정
   app.enableCors({
-    origin: true, //개발한 fronend url   true시 모든 url에서 api를 사용할수 있게 된다.
+    origin: [
+      'http://localhost:8000',
+      'http://localhost:3000',
+      'http://s3reactfront.s3-website.ap-northeast-2.amazonaws.com',
+    ], //true, //개발한 fronend url   true시 모든 url에서 api를 사용할수 있게 된다.
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
 

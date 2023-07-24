@@ -29,7 +29,12 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api', app, document);
     app.enableCors({
-        origin: true,
+        origin: [
+            'http://localhost:8000',
+            'http://localhost:3000',
+            'http://s3reactfront.s3-website.ap-northeast-2.amazonaws.com',
+        ],
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
         credentials: true,
     });
     const PORT = process.env.PORT;
