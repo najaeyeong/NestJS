@@ -1,8 +1,8 @@
 import { Module, forwardRef } from '@nestjs/common';
 import { AWSService } from './aws.service';
 import { ConfigModule } from '@nestjs/config';
-import { CatsController } from 'src/cats/cats.controller';
-import { CatsModule } from 'src/cats/cats.module';
+import { CatsController } from 'src/cats2/cats.controller';
+import { CatsModule } from 'src/cats2/cats.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { CommentsModule } from 'src/comments/comments.module';
 

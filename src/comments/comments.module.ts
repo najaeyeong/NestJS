@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CommentsSchema, Comments } from './comments.schema';
 
 import { CommentsRepository } from './comments.repository';
-import { CatsModule } from 'src/cats/cats.module';
+import { CatsModule } from 'src/cats2/cats.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { AWSModule } from 'src/aws/aws.module';
 

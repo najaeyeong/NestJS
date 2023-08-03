@@ -14,7 +14,7 @@ async function bootstrap() {
     app.useStaticAssets(path.join(__dirname, '..', './common', 'uploads'), {
         prefix: '/media',
     });
-    app.use(['/api', '/api-json'], expressBasicAuth({
+    app.use(['/docs', '/docs-json'], expressBasicAuth({
         challenge: true,
         users: {
             [process.env.SWAGGER_USER]: process.env.SWAGGER_PASSWORD,
@@ -27,10 +27,10 @@ async function bootstrap() {
         .addTag('cats')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
-    swagger_1.SwaggerModule.setup('api', app, document);
+    swagger_1.SwaggerModule.setup('docs', app, document);
     app.enableCors({
         origin: [
-            'http://localhost:8000',
+            'http://localhost:8080',
             'http://localhost:3000',
             'http://s3reactfront.s3-website.ap-northeast-2.amazonaws.com',
         ],

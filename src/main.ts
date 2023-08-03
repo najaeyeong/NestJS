@@ -31,9 +31,10 @@ async function bootstrap() {
   // app.get('/', (req, res) => {
   //   res.sendFile(path.join(__dirname, './build/index.html')); // __dirname = root    , / 로 접속하면 build의 index를 출력해주어라
   // });
+
   // api 보안 관련설정
   app.use(
-    ['/api', '/api-json'],
+    ['/docs', '/docs-json'],
     expressBasicAuth({
       challenge: true,
       users: {
@@ -50,12 +51,12 @@ async function bootstrap() {
     .addTag('cats')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document); //swagger api의 endpoint를 지정해주는것
+  SwaggerModule.setup('docs', app, document); //swagger api의 endpoint를 지정해주는것
 
   //Cors 설정
   app.enableCors({
     origin: [
-      'http://localhost:8000',
+      'http://localhost:8080',
       'http://localhost:3000',
       'http://s3reactfront.s3-website.ap-northeast-2.amazonaws.com',
     ], //true, //개발한 fronend url   true시 모든 url에서 api를 사용할수 있게 된다.

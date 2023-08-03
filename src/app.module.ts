@@ -1,7 +1,7 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatsModule } from './cats/cats.module';
+import { CatsModule } from './cats2/cats.module';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
@@ -10,12 +10,22 @@ import { CommentsController } from './comments/controllers/comments.controller';
 import { CommentsService } from './comments/services/comments.service';
 import { CommentsModule } from './comments/comments.module';
 import { AWSModule } from './aws/aws.module';
-
+import { WorktimeModule } from './worktime/worktime.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import mongoose from 'mongoose';
 
 //controllers에 providers와 imports를 연결,공급
 @Module({
   imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'cjdruf0984~',
+      database: 'company_group',
+      synchronize: true,
+    }),
     // config 전역 사용
     ConfigModule.forRoot({
       isGlobal: true,
@@ -26,6 +36,7 @@ import mongoose from 'mongoose';
     AuthModule,
     CommentsModule,
     AWSModule,
+    WorktimeModule,
   ], //모든 모듈이 app.module로 모이게 된다.
   controllers: [AppController],
   providers: [AppService],

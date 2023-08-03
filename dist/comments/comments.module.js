@@ -13,7 +13,7 @@ const comments_service_1 = require("./services/comments.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const comments_schema_1 = require("./comments.schema");
 const comments_repository_1 = require("./comments.repository");
-const cats_module_1 = require("../cats/cats.module");
+const cats_module_1 = require("../cats2/cats.module");
 const auth_module_1 = require("../auth/auth.module");
 const aws_module_1 = require("../aws/aws.module");
 let CommentsModule = exports.CommentsModule = class CommentsModule {

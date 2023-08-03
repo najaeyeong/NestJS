@@ -10,8 +10,8 @@ exports.AWSModule = void 0;
 const common_1 = require("@nestjs/common");
 const aws_service_1 = require("./aws.service");
 const config_1 = require("@nestjs/config");
-const cats_controller_1 = require("../cats/cats.controller");
-const cats_module_1 = require("../cats/cats.module");
+const cats_controller_1 = require("../cats2/cats.controller");
+const cats_module_1 = require("../cats2/cats.module");
 const auth_module_1 = require("../auth/auth.module");
 const comments_module_1 = require("../comments/comments.module");
 let AWSModule = exports.AWSModule = class AWSModule {

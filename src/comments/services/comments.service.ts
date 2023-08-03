@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CommentsRepository } from '../comments.repository';
 import { CommentsCreateDto } from '../dto/comments.create.dto';
 import { Types } from 'mongoose';
-import { CatsRepository } from 'src/cats/cats.repository';
+import { CatsRepository } from 'src/cats2/cats.repository';
 
 @Injectable()
 export class CommentsService {

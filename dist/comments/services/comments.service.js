@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CommentsService = void 0;
 const common_1 = require("@nestjs/common");
 const comments_repository_1 = require("../comments.repository");
-const cats_repository_1 = require("../../cats/cats.repository");
+const cats_repository_1 = require("../../cats2/cats.repository");
 let CommentsService = exports.CommentsService = class CommentsService {
     constructor(commentsRepository, catsRepository) {
         this.commentsRepository = commentsRepository;

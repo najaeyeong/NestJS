@@ -1,5 +1,5 @@
 import { PayloadType } from './jwt.payload';
-import { CatsRepository } from 'src/cats/cats.repository';
+import { CatsRepository } from 'src/cats2/cats.repository';
 declare const JwtStrategy_base: new (...args: any[]) => any;
 export declare class JwtStrategy extends JwtStrategy_base {
     private readonly catsRepository;

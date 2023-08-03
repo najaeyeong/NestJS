@@ -10,13 +10,15 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const cats_module_1 = require("./cats/cats.module");
+const cats_module_1 = require("./cats2/cats.module");
 const logger_middleware_1 = require("./common/middlewares/logger.middleware");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./auth/auth.module");
 const comments_module_1 = require("./comments/comments.module");
 const aws_module_1 = require("./aws/aws.module");
+const worktime_module_1 = require("./worktime/worktime.module");
+const typeorm_1 = require("@nestjs/typeorm");
 const mongoose_2 = require("mongoose");
 let AppModule = exports.AppModule = class AppModule {
     constructor() {
@@ -30,6 +32,15 @@ let AppModule = exports.AppModule = class AppModule {
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'mysql',
+                host: 'localhost',
+                port: 3306,
+                username: 'root',
+                password: 'cjdruf0984~',
+                database: 'company_group',
+                synchronize: true,
+            }),
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
             }),
@@ -39,6 +50,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             comments_module_1.CommentsModule,
             aws_module_1.AWSModule,
+            worktime_module_1.WorktimeModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

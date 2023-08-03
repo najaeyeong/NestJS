@@ -25,7 +25,7 @@
 import { CommentsRepository } from '../comments.repository';
 import { CommentsCreateDto } from '../dto/comments.create.dto';
 import { Types } from 'mongoose';
-import { CatsRepository } from 'src/cats/cats.repository';
+import { CatsRepository } from 'src/cats2/cats.repository';
 export declare class CommentsService {
     private readonly commentsRepository;
     private readonly catsRepository;

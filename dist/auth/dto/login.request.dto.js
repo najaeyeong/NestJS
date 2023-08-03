@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginRequestDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-const cats_schema_1 = require("../../cats/cats.schema");
+const cats_schema_1 = require("../../cats2/cats.schema");
 class LoginRequestDto extends (0, swagger_1.PickType)(cats_schema_1.Cat, [
     'email',
     'password',
